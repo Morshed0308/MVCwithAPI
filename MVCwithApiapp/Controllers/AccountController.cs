@@ -9,6 +9,11 @@ namespace MVCwithApiapp.Controllers
 {
     public class AccountController : Controller
     {
-        
+        [HttpGet("Login")]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
     }
 }

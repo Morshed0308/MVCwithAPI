@@ -16,7 +16,6 @@ D:\Others\Practice\MVCwithApiapp\MVCwithApiapp\obj\Debug\netcoreapp2.2\MVCwithAp
 D:\Others\Practice\MVCwithApiapp\MVCwithApiapp\obj\Debug\netcoreapp2.2\MVCwithApiapp.RazorCoreGenerate.cache
 D:\Others\Practice\MVCwithApiapp\MVCwithApiapp\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
 D:\Others\Practice\MVCwithApiapp\MVCwithApiapp\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
-D:\Others\Practice\MVCwithApiapp\MVCwithApiapp\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
 D:\Others\Practice\MVCwithApiapp\MVCwithApiapp\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 D:\Others\Practice\MVCwithApiapp\MVCwithApiapp\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs
 D:\Others\Practice\MVCwithApiapp\MVCwithApiapp\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
@@ -28,3 +27,4 @@ D:\Others\Practice\MVCwithApiapp\MVCwithApiapp\obj\Debug\netcoreapp2.2\MVCwithAp
 D:\Others\Practice\MVCwithApiapp\MVCwithApiapp\obj\Debug\netcoreapp2.2\MVCwithApiapp.dll
 D:\Others\Practice\MVCwithApiapp\MVCwithApiapp\obj\Debug\netcoreapp2.2\MVCwithApiapp.pdb
 D:\Others\Practice\MVCwithApiapp\MVCwithApiapp\obj\Debug\netcoreapp2.2\MVCwithApiapp.csproj.CopyComplete
+D:\Others\Practice\MVCwithApiapp\MVCwithApiapp\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ViewImports.g.cshtml.cs
