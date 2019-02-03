@@ -25,10 +25,10 @@ namespace MVCwithApiapp.Data
         public IEnumerable<Report> GetAllReportByUserId(int id)
         {
             return _ctx.Reports
-                  .Include(u=>u.user.UserId)
+                  .Include(u=>u.user)
                   .Where(i => i.user.UserId == id)
                   .ToList();
-            //throw new NotImplementedException();
+            
 
         }
 
@@ -37,17 +37,34 @@ namespace MVCwithApiapp.Data
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Report> GetAllReports()
+        public async Task<Report[]> GetAllReports()
         {
-            return _ctx.Reports
-                .Include(u=>u.user)
-                .OrderBy(p => p.user)
-                .ToList();
+            var result = _ctx.Reports
+                .Include(u => u.user)
+                .OrderBy(p => p.user);
+            return await result.ToArrayAsync();
+                
         }
 
-        public bool SaveAll()
+        public async Task<Report> GetReportByReportId(int id)
         {
-            return _ctx.SaveChanges() > 0;
+            var result=  _ctx.Reports
+                .Include(u => u.user)
+                .Where(R => R.ReportId == id);
+            return await result.FirstOrDefaultAsync();
+                
+        }
+
+        public void RemoveEntity<T>(T report)where T:class
+        {
+            _ctx.Remove(report);
+            
+                
+        }
+
+        public async Task<bool> SaveChangeAsync()
+        {
+            return (await _ctx.SaveChangesAsync()) > 0;
         }
     }
 }

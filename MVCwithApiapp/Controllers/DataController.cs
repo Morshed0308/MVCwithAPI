@@ -26,23 +26,23 @@ namespace MVCwithApiapp.Controllers
             _repository = repository;
         }
 
-        [Route("")]
+        
         [HttpPost]
-        public async Task<IActionResult> Post(ReportModel model)
+        public async Task<IActionResult> Post([FromForm]ReportModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
                     var result = _mapper.Map<ReportModel, Report>(model);
-
+                    
                     _repository.AddReport(result);
                   
-                    if (_repository.SaveAll())
+                    if (await _repository.SaveChangeAsync())
                     {
                         return Ok("Successfully saved data");
                     }
-
+                    //_mapper.Map<Report, ReportModel>(result);
 
                 }
                 else {
@@ -58,14 +58,21 @@ namespace MVCwithApiapp.Controllers
 
 
         }
-        [Route("api/Data/{id?}")]
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult<ReportModel[]>> Get(int id)
+        [Route("{id}")]
+        [HttpGet]
+        public async Task<ActionResult<ReportModel>> Get(int id)
         {
             try
             {
-                return Ok(_repository.GetAllReportByUserId(id));
-
+                var result = _repository.GetAllReportByUserId(id);
+                if (result != null)
+                {
+                    return Ok(result);
+                }
+                else {
+                    return NotFound("Sorry wrong user id.");
+                }
+                
             }
             catch (Exception)
             {
@@ -79,7 +86,7 @@ namespace MVCwithApiapp.Controllers
         {
             try
             {
-                return Ok(_repository.GetAllReports());
+                return Ok(await _repository.GetAllReports());
 
             }
             catch (Exception)
@@ -88,7 +95,24 @@ namespace MVCwithApiapp.Controllers
                 return BadRequest("Sorry! All Items couldn't be fetched!");
             }
         }
-
+        [Route("delete/{id:int}")]
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var report =await _repository.GetReportByReportId(id);
+            if (report==null)
+            {
+                return NotFound("This report doesnot exist");
+            }
+           // return Ok(report);
+             _repository.RemoveEntity(report);
+            if (await _repository.SaveChangeAsync())
+            {
+                return Ok("Successfully Deleted");
+            }
+            return BadRequest("Sorry!");
+            
+        }
 
 
     }

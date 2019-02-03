@@ -9,11 +9,14 @@ namespace MVCwithApiapp.Data
 {
     public interface IApiRepository
     {
-        IEnumerable<Report> GetAllReports();
+        Task<Report[]> GetAllReports();
         IEnumerable<User> GetAllReportByUserName();
         IEnumerable<Report> GetAllReportByUserId(int id);
+        Task<Report> GetReportByReportId(int id);
         void AddReport(object report);
-        bool SaveAll();
+        Task<bool> SaveChangeAsync();
+
+        void RemoveEntity<T>(T report) where T:class;
 
     }
 }

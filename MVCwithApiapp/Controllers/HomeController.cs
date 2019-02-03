@@ -35,12 +35,12 @@ namespace MVCwithApiapp.Controllers
                 var result = _mapper.Map<ReportModel, Report>(model);
 
                 _ctx.Add(result);
-                var res=_ctx.SaveChanges();
+                var res = _ctx.SaveChanges();
                 if (res > 0)
                 {
                     ViewBag.data = "Data saved";
                 }
-                
+
 
             }
             return View();
